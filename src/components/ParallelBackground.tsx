@@ -39,7 +39,7 @@ const usePierPoint = (ref: RefObject<HTMLElement | null>) => {
       const s = Math.max(W / IMG.w, H / IMG.h); // cover scale
       const w = IMG.w * s;
       const h = IMG.h * s;
-      console.log(w, h, W, H)
+      
       setPos({
         left: ((W - w) / 2 + PIER.x * w),
         top: H - h + PIER.y * h,
@@ -98,49 +98,49 @@ const WaterFilter = () => {
   );
 };
 
-const SkyFilter = () => {
-  const turbRef = useRef<SVGFETurbulenceElement>(null);
+// const SkyFilter = () => {
+//   const turbRef = useRef<SVGFETurbulenceElement>(null);
 
-  useEffect(() => {
-    let frame: number;
-    const start = performance.now();
+//   useEffect(() => {
+//     let frame: number;
+//     const start = performance.now();
 
-    const tick = (now: number) => {
-      const t = (now - start) / 1000;
-      // very low frequency = big soft cloud shapes
-      // slow drift along x makes the clouds move sideways
-      const fx = 0.0015 + Math.sin(t * 0.08) * 0.0008;
-      const fy = 0.004 + Math.cos(t * 0.06) * 0.001;
-      turbRef.current?.setAttribute("baseFrequency", `${fx} ${fy}`);
-      frame = requestAnimationFrame(tick);
-    };
+//     const tick = (now: number) => {
+//       const t = (now - start) / 1000;
+//       // very low frequency = big soft cloud shapes
+//       // slow drift along x makes the clouds move sideways
+//       const fx = 0.0015 + Math.sin(t * 0.08) * 0.0008;
+//       const fy = 0.004 + Math.cos(t * 0.06) * 0.001;
+//       turbRef.current?.setAttribute("baseFrequency", `${fx} ${fy}`);
+//       frame = requestAnimationFrame(tick);
+//     };
 
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, []);
+//     frame = requestAnimationFrame(tick);
+//     return () => cancelAnimationFrame(frame);
+//   }, []);
 
-  return (
-    <svg className="absolute h-0 w-0" aria-hidden>
-      <filter id="sky" x="-5%" y="-5%" width="110%" height="110%">
-        <feTurbulence
-          ref={turbRef}
-          type="fractalNoise"
-          baseFrequency="0.0015 0.004"
-          numOctaves="2"
-          seed="8"
-          result="noise"
-        />
-        <feDisplacementMap
-          in="SourceGraphic"
-          in2="noise"
-          scale="40"
-          xChannelSelector="R"
-          yChannelSelector="G"
-        />
-      </filter>
-    </svg>
-  );
-};
+//   return (
+//     <svg className="absolute h-0 w-0" aria-hidden>
+//       <filter id="sky" x="-5%" y="-5%" width="110%" height="110%">
+//         <feTurbulence
+//           ref={turbRef}
+//           type="fractalNoise"
+//           baseFrequency="0.0015 0.004"
+//           numOctaves="2"
+//           seed="8"
+//           result="noise"
+//         />
+//         <feDisplacementMap
+//           in="SourceGraphic"
+//           in2="noise"
+//           scale="40"
+//           xChannelSelector="R"
+//           yChannelSelector="G"
+//         />
+//       </filter>
+//     </svg>
+//   );
+// };
 
 
 /* cursor parallax helper: nearer layers move more */

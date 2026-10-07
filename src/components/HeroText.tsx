@@ -1,6 +1,5 @@
 import { FlipWords } from "@components/Flipwords";
 import { motion, useTransform, MotionValue } from "motion/react";
-import { useEffect, useState } from "react";
 
 type VariantsType = {
   hidden: { opacity: number; x: number };
