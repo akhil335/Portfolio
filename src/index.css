@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap");
+
 @import "tailwindcss";
 @theme {
   --color-primary: #030412;
@@ -49,9 +49,8 @@
 }
 body {
   background: #030412;
-  font-family: "Funnel Display", sans-serif;
+  font-family: "Funnel Display Variable", sans-serif;
   color: white;
-  scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
@@ -98,19 +97,19 @@ body {
 
 /* About Section */
 .grid-1 {
-  @apply row-span-2 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+  @apply row-span-2 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-600 transition-transform;
 }
 .grid-2 {
-  @apply row-span-1 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+  @apply row-span-1 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-600 transition-transform;
 }
 .grid-3 {
-  @apply row-span-1 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+  @apply row-span-1 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-600 transition-transform;
 }
 .grid-4 {
-  @apply row-span-1 md:col-span-2 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+  @apply row-span-1 md:col-span-2 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-600 transition-transform;
 }
 .grid-5 {
-  @apply row-span-1 md:col-span-4 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
+  @apply row-span-1 md:col-span-4 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-600 transition-transform;
 }
 
 .grid-default-color {

@@ -5,7 +5,7 @@ import * as THREE from "three";
 import type { MotionValue } from "motion/react";
 import { useMediaQuery } from 'react-responsive'
 
-const MODEL_URL = "/models/tenhun_falling_spaceman_fanart.glb"; // file lives in /public
+const MODEL_URL = "/models/spaceman.glb"; // file lives in /public
 const TINT = "#9a8fd0"; // multiplies the texture to push orange toward your purple dusk. Set to "#ffffff" to keep the original colors.
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
   pointerX: MotionValue<number>; // -0.5 to 0.5, the smoothed cursor value you already have
 };
 
-export function Astronaut({ progress, pointerX }: Props) {
+export default function Astronaut({ progress, pointerX }: Props) {
     const isMobile = useMediaQuery({
         query: '(max-width: 768px)'
     })

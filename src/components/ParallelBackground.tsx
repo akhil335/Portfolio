@@ -39,7 +39,7 @@ const usePierPoint = (ref: RefObject<HTMLElement | null>) => {
       const s = Math.max(W / IMG.w, H / IMG.h); // cover scale
       const w = IMG.w * s;
       const h = IMG.h * s;
-      
+
       setPos({
         left: ((W - w) / 2 + PIER.x * w),
         top: H - h + PIER.y * h,
@@ -55,25 +55,31 @@ const usePierPoint = (ref: RefObject<HTMLElement | null>) => {
   return pos;
 };
 
-const WaterFilter = () => {
+const WaterFilter = ({ active = true }: { active?: boolean }) => {
   const turbRef = useRef<SVGFETurbulenceElement>(null);
 
   useEffect(() => {
+    if (!active) return;
     let frame: number;
+    let lastTime = 0;
     const start = performance.now();
 
     const tick = (now: number) => {
-      const t = (now - start) / 1000;
-      // low x + higher y frequency = wide horizontal ripples
-      const fx = 0.004 + Math.sin(t * 0.5) * 0.001;
-      const fy = 0.02 + Math.cos(t * 0.4) * 0.004;
-      turbRef.current?.setAttribute("baseFrequency", `${fx} ${fy}`);
+      // Throttle to ~30fps to avoid choking main thread with DOM mutations
+      if (now - lastTime >= 33) {
+        lastTime = now;
+        const t = (now - start) / 1000;
+        // low x + higher y frequency = wide horizontal ripples
+        const fx = 0.004 + Math.sin(t * 0.5) * 0.001;
+        const fy = 0.02 + Math.cos(t * 0.4) * 0.004;
+        turbRef.current?.setAttribute("baseFrequency", `${fx} ${fy}`);
+      }
       frame = requestAnimationFrame(tick);
     };
 
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, []);
+  }, [active]);
 
   return (
     <svg className="absolute h-0 w-0" aria-hidden>
@@ -153,7 +159,8 @@ const useShift = (
   y: useTransform(my, (v) => v * depth * 0.6),
 });
 
-const ParallelBackground = ({ progress }: { progress: MotionValue<number> }) => {
+const ParallelBackground = ({ progress, inView = true }: { progress: MotionValue<number>; inView?: boolean }) => {
+
   const rootRef = useRef<HTMLDivElement>(null);
   const lantern = usePierPoint(rootRef);
   const reduce = useReducedMotion();
@@ -165,7 +172,7 @@ const ParallelBackground = ({ progress }: { progress: MotionValue<number> }) => 
   const hintOpacity = useTransform(progress, [0, 0.06], [1, 0]);
   const particleScale = useTransform(progress, [0, 1], [1, 3.2]);
 
-   /* cursor parallax */
+  /* cursor parallax */
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const smx = useSpring(mx, { stiffness: 50, damping: 20 });
@@ -182,7 +189,7 @@ const ParallelBackground = ({ progress }: { progress: MotionValue<number> }) => 
     <div className="absolute inset-0">
 
       {/* <SkyFilter /> */}
-      <WaterFilter />
+      <WaterFilter active={inView} />
 
       {/* Sky (farthest) */}
       <motion.div
@@ -191,7 +198,7 @@ const ParallelBackground = ({ progress }: { progress: MotionValue<number> }) => 
           transformOrigin: "50% 45%",
           filter: "url(#sky)",
         }}
-        className="absolute inset-0 w-full h-full bg-cover bg-bottom bg-[url(/assets/sky-horizon.png)]"
+        className="absolute inset-0 w-full h-full bg-cover bg-bottom bg-[url(/assets/sky-horizon.webp)]"
       />
 
       {/* Water (far) */}
@@ -201,28 +208,28 @@ const ParallelBackground = ({ progress }: { progress: MotionValue<number> }) => 
           transformOrigin: "50% 45%",
           filter: "url(#water)",
         }}
-        className="absolute inset-0 w-full h-full bg-cover bg-bottom bg-[url(/assets/river.png)]"
+        className="absolute inset-0 w-full h-full bg-cover bg-bottom bg-[url(/assets/river.webp)]"
       />
 
 
-    <motion.div
-     ref={rootRef}
-      style={{ rotate: swayRotate, y: swayY, scale: 1.04 }}
-      className="absolute inset-0"
-    >
-      <div className="absolute inset-0 bg-black/40" />
+      <motion.div
+        ref={rootRef}
+        style={{ rotate: swayRotate, y: swayY, scale: 1.04 }}
+        className="absolute inset-0"
+      >
+        <div className="absolute inset-0 bg-black/40" />
 
-      
-      {/* 7. Bridge + lantern (lantern scales with the pier so it stays glued to its end) */}
+
+        {/* 7. Bridge + lantern (lantern scales with the pier so it stays glued to its end) */}
         <motion.div
           style={{ scale: bridgeScale, transformOrigin: ORIGIN, ...bridgeShift }}
           className="absolute inset-0"
         >
-          <div className="absolute inset-0 bg-cover bg-bottom bg-[url(/assets/bridge.png)]" />
+          <div className="absolute inset-0 bg-cover bg-bottom bg-[url(/assets/bridge.webp)]" />
           <motion.div
             animate={reduce ? undefined : { opacity: [0.7, 1, 0.8, 1, 0.65] }}
             transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-           style={{
+            style={{
               left: lantern.left,
               top: lantern.top,
               background:
@@ -257,7 +264,7 @@ const ParallelBackground = ({ progress }: { progress: MotionValue<number> }) => 
         )}
 
 
-    </motion.div>
+      </motion.div>
       {/* Vignette */}
       <div
         className="pointer-events-none absolute inset-0"
