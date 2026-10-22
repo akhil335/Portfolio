@@ -1,7 +1,7 @@
 import { useState } from "react"
 import emailjs from "@emailjs/browser"
 import Alert from "@/components/Alert"
-import { Particles } from "@/components/particles"
+import { Particles } from "@/components/Particles"
 
 const Contact = () => {
   const [isloading, setIsloading] = useState<boolean>(false)
