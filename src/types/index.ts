@@ -3,3 +3,9 @@ export interface MenuItems {
     "id": string,
     "path": string 
 }
+
+export interface Tag {
+  id: number;
+  name: string;
+  path: string;
+}

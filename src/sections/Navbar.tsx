@@ -24,7 +24,7 @@ const Navbar = () => {
       <div className="mx-auto c-space max-w-7xl">
         <div className="flex items-center justify-between py-2 sm:py-0">
           <a href="/" className="text-xl font-bold transition-colors text-neutral-400 hover:text-white">
-          Akhil
+          <img src="/assets/logos/logo.png" alt="logo" className="w-10 h-10" />
           </a>
          <button
             onClick={() => setIsOpen((prev) => !prev)}

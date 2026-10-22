@@ -11,9 +11,9 @@ export const myProjects = [
       "Designed a clean, mobile-friendly interface that works across desktop, tablet, and mobile.",
       "Deployed the application on Render.",
     ],
-    href: "", // add your Demo link
+    href: "https://store-it-eta-umber.vercel.app/", // add your Demo link
     logo: "",
-    image: "/assets/projects/storeit.jpg",
+    image: "/assets/projects/storeit.png",
     tags: [
       {
         id: 1,
@@ -43,9 +43,9 @@ export const myProjects = [
       "Created responsive layouts that work smoothly across screen sizes.",
       "Deployed the application on Render.",
     ],
-    href: "", // add your Demo link
+    href: "https://yoom-nine-pi.vercel.app/", // add your Demo link
     logo: "",
-    image: "/assets/projects/yoom.jpg",
+    image: "/assets/projects/yoom.png",
     tags: [
       {
         id: 1,
@@ -60,7 +60,7 @@ export const myProjects = [
       {
         id: 3,
         name: "Stream.io",
-        path: "/assets/logos/stream.svg",
+        path: "/assets/logos/getstream.svg",
       },
     ],
   },
@@ -75,9 +75,9 @@ export const myProjects = [
       "Created reusable components for movie rows, cards, and detail views.",
       "Implemented a responsive layout for desktop and mobile screens.",
     ],
-    href: "", // add your Demo link
+    href: "https://netflix-clone-qx73.onrender.com", // add your Demo link
     logo: "",
-    image: "/assets/projects/netflix-clone.jpg",
+    image: "/assets/projects/netflix-clone.png",
     tags: [
       {
         id: 1,
@@ -100,57 +100,46 @@ export const myProjects = [
 
 export const mySocials = [
   {
-    name: "WhatsApp",
-    href: "",
-    icon: "/assets/socials/whatsApp.svg",
+    name: "Github",
+    href: "https://github.com/akhil335",
+    icon: "/assets/socials/github.svg",
   },
   {
     name: "Linkedin",
-    href: "https://www.linkedin.com/in/ali-sanati/",
+    href: "https://www.linkedin.com/in/akhil-semwal",
     icon: "/assets/socials/linkedIn.svg",
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com/ali.sanatidev/reels/",
+    href: "https://www.instagram.com/akhilweb.dev",
     icon: "/assets/socials/instagram.svg",
   },
 ];
 
 export const experiences = [
   {
-    title: "Software Developer",
-    job: "Security & Defense Projects",
+    title: "Associate Software Engineer",
+    job: "Vistaar Digital",
     date: "2021-2023",
     contents: [
-      "Enhanced application security and developed new features, adhering to standards set by the Passive Defense Organization and National Cyberspace Center.",
-      "Designed and implemented intuitive map interfaces using MapsUI, enhancing user experience and enabling seamless interactive map integration.",
-      "Developed applications for industrial automation, leveraging C++ and the Fatek API for PLC communication.",
-      "Enhanced responsiveness and usability of applications using Windows Forms and WPF frameworks.",
-      "Executed XML to SVG conversions using X-DOM, ensuring dynamic and efficient data visualization.",
+      "Developed client-facing frontend features, including work on a project for Abbott in the pharmaceutical domain.",
+      "Implemented responsive layouts, CSS animations, and jQuery interactions to match client requirements.",
+      "Resolved UI bugs and collaborated with teammates to deliver frontend changes on schedule.",
     ],
   },
   {
-    title: "Back-End Developer",
-    job: "Car Manufacture",
-    date: "2023-2024",
+    title: "Frontend Developer — Consultant",
+    job: "Estatetool A/S",
+    date: "2023-2026",
     contents: [
-      "Engineered systems for large-scale data ingestion and analysis, ensuring efficient data processing and storage.",
-      "Developed back-end systems enabling vehicle-to-cloud communication for telemetry, diagnostics, and remote control:",
-      "✅ Implemented secure APIs, following ISO 26262 automotive safety standards.",
-      "✅ Ensured data privacy for customers and partners through industry-compliant protocols.",
-      "✅ Delivered remote features like over-the-air updates, real-time tracking, and remote start capabilities.",
-    ],
-  },
-  {
-    title: "Freelance Developer",
-    job: "Self-Employed",
-    date: "2025-Present",
-    contents: [
-      "Created a personal portfolio using Three.js, React, Vite, and WebAPI to showcase technical expertise.",
-      "Continuously enhancing technical skills and expanding expertise in modern web development and back-end technologies.",
+      "Developed and maintained responsive React interfaces for real-estate applications across desktop, tablet, and mobile.",
+      "Built an interactive 360° property viewer with HTML Canvas to display panoramic building and property imagery alongside detailed information.",
+      "Created reusable components and delivered features based on client requirements, improving consistency across the application.",
+      "Investigated production issues, fixed UI defects, and collaborated with an international team on ongoing releases and support.",
     ],
   },
 ];
+
 export const reviews = [
   {
     name: "Jack",
